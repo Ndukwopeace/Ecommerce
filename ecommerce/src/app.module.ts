@@ -1,10 +1,12 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ProductModule } from './product/product.module';
 import { TypeOrmModule } from '@nestjs/typeorm'
 import { Product } from './product/Entity/product.entity';
 import { DataSource } from 'typeorm';
+import { LoggerMiddleware } from './common/middleware/logger/logger.middleware';
+import { ProductController } from './product/product.controller';
 @Module({
   
   imports: [ TypeOrmModule.forRoot({
@@ -22,6 +24,11 @@ import { DataSource } from 'typeorm';
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {
+export class AppModule implements NestModule{
   constructor(private dataSource: DataSource){}
+
+  configure(consumer: MiddlewareConsumer) {
+      consumer.apply(LoggerMiddleware).forRoutes('product')
+  }
+
 }

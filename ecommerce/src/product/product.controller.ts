@@ -18,6 +18,7 @@ export class ProductController {
 
     @Get(':id')
     getOne(@Param('id') id:string){
+        console.log(id);
         // to convert the id to a number we use + operator 
         return this.productService.findOneProductByID(+id);
     }
