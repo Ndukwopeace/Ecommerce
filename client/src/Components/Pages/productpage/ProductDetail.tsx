@@ -13,7 +13,6 @@ const ProductDetail = () => {
                 console.log(res)
                 setProduct(res.data)
             }).catch(err => console.log(err));
-
     }, [])
     return (
         <Box className="border border-white h-screen pt-[6rem] pl-[4rem] flex">

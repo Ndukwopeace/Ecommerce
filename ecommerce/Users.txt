@@ -1,0 +1,6 @@
+entities needed 
+Users
+Products
+orders
+shipping info
+category

@@ -7,6 +7,8 @@ import { Product } from './product/Entity/product.entity';
 import { DataSource } from 'typeorm';
 import { LoggerMiddleware } from './common/middleware/logger/logger.middleware';
 import { ProductController } from './product/product.controller';
+import { UserModule } from './user/user.module';
+import { UserEntity } from './user/entities/user.entity';
 @Module({
   
   imports: [ TypeOrmModule.forRoot({
@@ -15,12 +17,13 @@ import { ProductController } from './product/product.controller';
     port: 5432,
     username: 'postgres',
     password: 'root',
-    entities: [Product],
+    entities: [Product, UserEntity],
+    migrations:['dist/db/migrations/*{.ts,.js}'],
     database: 'ecommerce',
     // setting synchronize true shouldn't be used in production , otherwise you can loose data 
     synchronize: true,
     logging: true 
-  }) ,ProductModule],
+  }) ,ProductModule, UserModule],
   controllers: [AppController],
   providers: [AppService],
 })
