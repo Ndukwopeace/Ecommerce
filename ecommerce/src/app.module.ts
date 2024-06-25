@@ -10,9 +10,10 @@ import { ProductController } from './product/product.controller';
 import { UserModule } from './user/user.module';
 import { UserEntity } from './user/entities/user.entity';
 import { dataSourceOptions } from 'db/data-source';
+import { CategoryModule } from './category/category.module';
 @Module({
   
-  imports: [ TypeOrmModule.forRoot(dataSourceOptions) ,ProductModule, UserModule],
+  imports: [ TypeOrmModule.forRoot(dataSourceOptions) ,ProductModule, UserModule, CategoryModule],
   controllers: [AppController],
   providers: [AppService],
 })
