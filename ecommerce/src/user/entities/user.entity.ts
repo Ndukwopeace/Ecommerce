@@ -19,4 +19,6 @@ export class UserEntity {
     @Column({type: 'enum' , enum: Roles , array: true , default:[Roles.USER]})
     roles: Roles[] ;
 
+    
+
 }

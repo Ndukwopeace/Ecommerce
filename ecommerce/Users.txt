@@ -1,6 +1,6 @@
-entities needed 
-Users
-Products
-orders
-shipping info
-category
+Entities needed :
+    Users
+    Products
+    Orders
+    Shipping info
+    Category

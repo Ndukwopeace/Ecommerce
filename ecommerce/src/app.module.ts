@@ -9,21 +9,10 @@ import { LoggerMiddleware } from './common/middleware/logger/logger.middleware';
 import { ProductController } from './product/product.controller';
 import { UserModule } from './user/user.module';
 import { UserEntity } from './user/entities/user.entity';
+import { dataSourceOptions } from 'db/data-source';
 @Module({
   
-  imports: [ TypeOrmModule.forRoot({
-    type: 'postgres',
-    host: 'localhost',
-    port: 5432,
-    username: 'postgres',
-    password: 'root',
-    entities: [Product, UserEntity],
-    migrations:['dist/db/migrations/*{.ts,.js}'],
-    database: 'ecommerce',
-    // setting synchronize true shouldn't be used in production , otherwise you can loose data 
-    synchronize: true,
-    logging: true 
-  }) ,ProductModule, UserModule],
+  imports: [ TypeOrmModule.forRoot(dataSourceOptions) ,ProductModule, UserModule],
   controllers: [AppController],
   providers: [AppService],
 })
